@@ -39,7 +39,7 @@ class Student extends Person {
   }
 
   listSubjects() {
-    console.log(this.favLanguage.join("\n"));
+    console.log(this.favSubjects.join("\n"));
   }
 
   PRAssignment(subject) {
@@ -78,9 +78,6 @@ const fred = new Instructor({
   specialty: 'Front-end',
   catchPhrase: `Don't forget the homies`
 });
-fred.speak();
-fred.demo('Test Subject');
-fred.grade('Dude', 'Test Subject');
 
 // Student
 const dude = new Student({
@@ -106,3 +103,21 @@ const pmDude = new ProjectManager({
   favInstructor: 'Fred',
   gradClassName: 'Web2'
 });
+
+// Instructor
+fred.speak();
+fred.demo('Test Subject');
+fred.grade('Dude', 'Test Subject');
+
+// Student
+dude.speak();
+dude.listSubjects();
+dude.PRAssignment('Test Subject');
+dude.sprintChallenge('Test Subject');
+
+// ProjectManager
+pmDude.speak();
+pmDude.demo('Test Subject');
+pmDude.grade(dude, 'Test Subject');
+pmDude.standUp('Test Subject');
+pmDude.debugsCode(dude, 'Test Subject');
