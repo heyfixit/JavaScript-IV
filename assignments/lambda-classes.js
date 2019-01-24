@@ -28,6 +28,11 @@ class Instructor extends Person {
   grade(student, subject) {
     console.log(`${student.name} receives a perfect score on ${subject}`);
   }
+
+  rollGrade(student) {
+    student.grade = Math.floor(Math.random() * 100);
+    console.log(`${student.name}'s grade is now: ${student.grade}`);
+  }
 }
 
 class Student extends Person {
@@ -36,6 +41,7 @@ class Student extends Person {
     this.previousBackground = attrs.previousBackground;
     this.className = attrs.className;
     this.favSubjects = attrs.favSubjects;
+    this.grade = attrs.grade;
   }
 
   listSubjects() {
@@ -48,6 +54,14 @@ class Student extends Person {
 
   sprintChallenge(subject) {
     console.log(`${this.name} has begun the sprint challenge on ${subject}`);
+  }
+
+  graduate() {
+    if(this.grade >= 70) {
+      console.log(`${this.name} is eligible for graduation! (${this.grade})`);
+    } else {
+      console.log(`${this.name} is not eligible for graduation! (${this.grade})`);
+    }
   }
 }
 
@@ -87,7 +101,8 @@ const dude = new Student({
   gender: 'male',
   className: 'Web17',
   favSubjects: [ 'JavaScript', 'CSS', 'HTML' ],
-  previousBackground: [ 'Dude things' ]
+  previousBackground: [ 'Dude things' ],
+  grade: 100
 });
 
 // Project Manager
@@ -107,7 +122,8 @@ const pmDude = new ProjectManager({
 // Instructor
 fred.speak();
 fred.demo('Test Subject');
-fred.grade('Dude', 'Test Subject');
+fred.grade(dude, 'Test Subject');
+fred.rollGrade(dude);
 
 // Student
 dude.speak();
@@ -121,3 +137,8 @@ pmDude.demo('Test Subject');
 pmDude.grade(dude, 'Test Subject');
 pmDude.standUp('Test Subject');
 pmDude.debugsCode(dude, 'Test Subject');
+
+for(let i = 0; i < 5; i++) {
+  fred.rollGrade(dude);
+  dude.graduate();
+}
