@@ -138,6 +138,7 @@ pmDude.grade(dude, 'Test Subject');
 pmDude.standUp('Test Subject');
 pmDude.debugsCode(dude, 'Test Subject');
 
+// test graduate method
 for(let i = 0; i < 5; i++) {
   fred.rollGrade(dude);
   dude.graduate();
