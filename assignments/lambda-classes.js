@@ -15,7 +15,7 @@ class Person {
 
 class Instructor extends Person {
   constructor(attrs) {
-    super(aattrs);
+    super(attrs);
     this.specialty = attrs.specialty;
     this.favLanguage = attrs.favLanguage;
     this.catchPhrase = attrs.catchPhrase;
@@ -66,3 +66,43 @@ class ProjectManager extends Instructor {
     console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
   }
 }
+
+// Testing
+// Instructor
+const fred = new Instructor({
+  name: 'Fred',
+  location: 'Bedrock',
+  age: 37,
+  gender: 'male',
+  favLanguage: 'JavaScript',
+  specialty: 'Front-end',
+  catchPhrase: `Don't forget the homies`
+});
+fred.speak();
+fred.demo('Test Subject');
+fred.grade('Dude', 'Test Subject');
+
+// Student
+const dude = new Student({
+  name: 'Dude',
+  location: 'Place',
+  age: 35,
+  gender: 'male',
+  className: 'Web17',
+  favSubjects: [ 'JavaScript', 'CSS', 'HTML' ],
+  previousBackground: [ 'Dude things' ]
+});
+
+// Project Manager
+const pmDude = new ProjectManager({
+  name: 'PMDude',
+  location: 'PMDude Place',
+  age: 35,
+  gender: 'male',
+  className: 'Web17',
+  favLanguage: 'CSS',
+  specialty: 'Managing Things',
+  catchPhrase: 'Managerial tasks are my favorite',
+  favInstructor: 'Fred',
+  gradClassName: 'Web2'
+});
