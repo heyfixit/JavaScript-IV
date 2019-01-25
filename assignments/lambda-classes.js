@@ -9,7 +9,7 @@ class Person {
   }
 
   speak() {
-    console.log(`Hello my name is ${this.name}, I am from ${this.location}`);
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
   }
 }
 
@@ -22,16 +22,16 @@ class Instructor extends Person {
   }
 
   demo(subject) {
-    console.log(`Today we are learning about ${subject}`);
+    return `Today we are learning about ${subject}`;
   }
 
   grade(student, subject) {
-    console.log(`${student.name} receives a perfect score on ${subject}`);
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 
   rollGrade(student) {
     student.grade = Math.floor(Math.random() * 100);
-    console.log(`${student.name}'s grade is now: ${student.grade}`);
+    return `${student.name}'s grade is now: ${student.grade}`;
   }
 }
 
@@ -45,22 +45,22 @@ class Student extends Person {
   }
 
   listSubjects() {
-    console.log(this.favSubjects.join("\n"));
+    return this.favSubjects.join("\n");
   }
 
   PRAssignment(subject) {
-    console.log(`${this.name} has submitted a PR for ${subject}`);
+    return `${this.name} has submitted a PR for ${subject}`;
   }
 
   sprintChallenge(subject) {
-    console.log(`${this.name} has begun the sprint challenge on ${subject}`);
+    return `${this.name} has begun the sprint challenge on ${subject}`;
   }
 
   graduate() {
     if(this.grade >= 70) {
-      console.log(`${this.name} is eligible for graduation! (${this.grade})`);
+      return `${this.name} is eligible for graduation! (${this.grade})`;
     } else {
-      console.log(`${this.name} is not eligible for graduation! (${this.grade})`);
+      return `${this.name} is not eligible for graduation! (${this.grade})`;
     }
   }
 }
@@ -73,11 +73,11 @@ class ProjectManager extends Instructor {
   }
 
   standUp(channel) {
-    console.log(`${this.name} announces to ${channel}, @channel standby times!`);
+    return `${this.name} announces to ${channel}, @channel standby times!`;
   }
 
   debugsCode(student, subject) {
-    console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
   }
 }
 
@@ -120,26 +120,26 @@ const pmDude = new ProjectManager({
 });
 
 // Instructor
-fred.speak();
-fred.demo('Test Subject');
-fred.grade(dude, 'Test Subject');
-fred.rollGrade(dude);
+console.log(fred.speak());
+console.log(fred.demo('Test Subject'));
+console.log(fred.grade(dude, 'Test Subject'));
+console.log(fred.rollGrade(dude));
 
 // Student
-dude.speak();
-dude.listSubjects();
-dude.PRAssignment('Test Subject');
-dude.sprintChallenge('Test Subject');
+console.log(dude.speak());
+console.log(dude.listSubjects());
+console.log(dude.PRAssignment('Test Subject'));
+console.log(dude.sprintChallenge('Test Subject'));
 
 // ProjectManager
-pmDude.speak();
-pmDude.demo('Test Subject');
-pmDude.grade(dude, 'Test Subject');
-pmDude.standUp('Test Subject');
-pmDude.debugsCode(dude, 'Test Subject');
+console.log(pmDude.speak());
+console.log(pmDude.demo('Test Subject'));
+console.log(pmDude.grade(dude, 'Test Subject'));
+console.log(pmDude.standUp('Test Subject'));
+console.log(pmDude.debugsCode(dude, 'Test Subject'));
 
 // test graduate method
 for(let i = 0; i < 5; i++) {
-  fred.rollGrade(dude);
-  dude.graduate();
+  console.log(fred.rollGrade(dude));
+  console.log(dude.graduate());
 }
